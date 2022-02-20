@@ -1,0 +1,341 @@
+openapi: 3.0.0
+
+info:
+
+  title: To Do Tasks API
+
+  contact: {}
+
+  version: '1.0'
+
+servers:
+
+- url: https://to-do-tasks-api.herokuapp.com/api/v1
+
+  variables: {}
+
+paths:
+  /auth/login:
+
+    post:
+
+      tags:
+
+      - Auth
+
+      summary: Login User
+
+      operationId: LoginUser
+
+      parameters: []
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/loginrequest'
+
+            example:
+
+              email: zakarya@gmail.com
+
+              password: secret
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+      security: []
+
+  /auth/register:
+
+    post:
+
+      tags:
+
+      - Auth
+
+      summary: Register User
+
+      operationId: RegisterUser
+
+      parameters: []
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/registerrequest'
+
+            example:
+
+              name: zakarya
+
+              email: zakarya@gmail.com
+
+              password: secret
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+      security: []
+
+  /tasks:
+
+    get:
+
+      tags:
+
+      - Tasks
+
+      summary: Get All Tasks
+
+      operationId: GetAllTasks
+
+      parameters:
+
+      - name: authentication
+
+        in: header
+
+        description: ''
+
+        required: true
+
+        style: simple
+
+        schema:
+
+          type: string
+
+          example: jobs eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjBmYTE0MmU3MjRmMzRkOGZlY2ViZGQiLCJuYW1lIjoiemFrYXJ5YSIsImlhdCI6MTY0NTE5MTQ5MCwiZXhwIjoxNjQ3NzgzNDkwfQ.oFbjXUOqFJOYFa1WgJ9WLe8lZHKtropqL3nK4mUynUo
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+    post:
+
+      tags:
+
+      - Tasks
+
+      summary: Create Task
+
+      operationId: CreateTask
+
+      parameters: []
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          text/plain:
+
+            schema:
+
+              type: object
+
+              example: {}
+
+            example: {}
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+  /tasks/:id:
+
+    get:
+
+      tags:
+
+      - Tasks
+
+      summary: Get Single Task
+
+      operationId: GetSingleTask
+
+      parameters: []
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+    patch:
+
+      tags:
+
+      - Tasks
+
+      summary: Update Task
+
+      operationId: UpdateTask
+
+      parameters: []
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+    delete:
+
+      tags:
+
+      - Tasks
+
+      summary: Delete Task
+
+      operationId: DeleteTask
+
+      parameters: []
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+
+
+components:
+
+  schemas:
+
+    loginrequest:
+
+      title: loginrequest
+
+      required:
+
+      - email
+
+      - password
+
+      type: object
+
+      properties:
+
+        email:
+
+          type: string
+
+        password:
+
+          type: string
+
+      example:
+
+        email: zakarya@gmail.com
+
+        password: secret
+
+    registerrequest:
+
+      title: registerrequest
+
+      required:
+
+      - name
+
+      - email
+
+      - password
+
+      type: object
+
+      properties:
+
+        name:
+
+          type: string
+
+        email:
+
+          type: string
+
+        password:
+
+          type: string
+
+      example:
+
+        name: zakarya
+
+        email: zakarya@gmail.com
+
+        password: secret
+
+tags:
+
+- name: Auth
+
+  description: ''
+
+- name: Tasks
+
+  description: ''
+
+
+

@@ -1,0 +1,483 @@
+openapi: 3.0.0
+
+info:
+
+  title: To Do Tasks API
+
+  contact: {}
+
+  version: '1.0'
+
+servers:
+
+- url: https://to-do-tasks-api.herokuapp.com/api/v1
+
+  variables: {}
+
+paths:
+
+  /tasks:
+
+    get:
+
+      tags:
+
+      - Tasks
+
+      summary: Get All Tasks
+
+      operationId: GetAllTasks
+
+      parameters:
+
+      - name: authentication
+
+        in: header
+
+        description: ''
+
+        required: true
+
+        style: simple
+
+        schema:
+
+          type: string
+
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjEyMjNkN2NiNjc0ZjE4YmRmODcxMDIiLCJuYW1lIjoiemFrYXJ5YSIsImlhdCI6MTY0NTM1NTk5MSwiZXhwIjoxNjQ1NDQyMzkxfQ.5KaSfqxlmUQZxRUPSt6atrbut5YUe22tmQ-cHPUpsXE
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+    post:
+
+      tags:
+
+      - Tasks
+
+      summary: Create task
+
+      operationId: Createtask
+
+      parameters:
+
+      - name: authentication
+
+        in: header
+
+        description: ''
+
+        required: true
+
+        style: simple
+
+        schema:
+
+          type: string
+
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjEyMjNkN2NiNjc0ZjE4YmRmODcxMDIiLCJuYW1lIjoiemFrYXJ5YSIsImlhdCI6MTY0NTM1NTk5MSwiZXhwIjoxNjQ1NDQyMzkxfQ.5KaSfqxlmUQZxRUPSt6atrbut5YUe22tmQ-cHPUpsXE
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/createtaskrequest'
+
+            example:
+
+              name: clean the house
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+
+  /tasks/{id}:
+  
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The task ID
+
+    get:
+
+      tags:
+
+      - Tasks
+
+      summary: Get Single Task
+
+      operationId: GetSingleTask
+
+      parameters:
+
+      - name: authentication
+
+        in: header
+
+        description: ''
+
+        required: true
+
+        style: simple
+
+        schema:
+
+          type: string
+
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjEyMjNkN2NiNjc0ZjE4YmRmODcxMDIiLCJuYW1lIjoiemFrYXJ5YSIsImlhdCI6MTY0NTM1NTk5MSwiZXhwIjoxNjQ1NDQyMzkxfQ.5KaSfqxlmUQZxRUPSt6atrbut5YUe22tmQ-cHPUpsXE
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+    patch:
+
+      tags:
+
+      - Tasks
+
+      summary: Update Task
+
+      operationId: UpdateTask
+
+      parameters:
+
+      - name: authentication
+
+        in: header
+
+        description: ''
+
+        required: true
+
+        style: simple
+
+        schema:
+
+          type: string
+
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjEyMjNkN2NiNjc0ZjE4YmRmODcxMDIiLCJuYW1lIjoiemFrYXJ5YSIsImlhdCI6MTY0NTM1NTk5MSwiZXhwIjoxNjQ1NDQyMzkxfQ.5KaSfqxlmUQZxRUPSt6atrbut5YUe22tmQ-cHPUpsXE
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/updatetaskrequest'
+
+            example:
+
+              completed: true
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+    delete:
+
+      tags:
+
+      - Tasks
+
+      summary: Delete Task
+
+      operationId: DeleteTask
+
+      parameters:
+
+      - name: authentication
+
+        in: header
+
+        description: ''
+
+        required: true
+
+        style: simple
+
+        schema:
+
+          type: string
+
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjEyMjNkN2NiNjc0ZjE4YmRmODcxMDIiLCJuYW1lIjoiemFrYXJ5YSIsImlhdCI6MTY0NTM1NTk5MSwiZXhwIjoxNjQ1NDQyMzkxfQ.5KaSfqxlmUQZxRUPSt6atrbut5YUe22tmQ-cHPUpsXE
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+  /auth/login:
+
+    post:
+
+      tags:
+
+      - Auth
+
+      summary: Login User
+
+      operationId: LoginUser
+
+      parameters: []
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/loginrequest'
+
+            example:
+
+              email: zakarya@gmail.com
+
+              password: secret
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+      security: []
+
+  /auth/register:
+
+    post:
+
+      tags:
+
+      - Auth
+
+      summary: Register User
+
+      operationId: RegisterUser
+
+      parameters: []
+
+      requestBody:
+
+        description: ''
+
+        content:
+
+          application/json:
+
+            schema:
+
+              $ref: '#/components/schemas/registerrequest'
+
+            example:
+
+              name: hacen
+
+              email: hacen@gmail.com
+
+              password: secret
+
+        required: true
+
+      responses:
+
+        '200':
+
+          description: ''
+
+          headers: {}
+
+      deprecated: false
+
+      security: []
+
+components:
+
+  schemas:
+
+    createtaskrequest:
+
+      title: createtaskrequest
+
+      required:
+
+      - name
+
+      type: object
+
+      properties:
+
+        name:
+
+          type: string
+
+      example:
+
+        name: clean the house
+
+    updatetaskrequest:
+
+      title: updatetaskrequest
+
+      required:
+
+      - completed
+
+      type: object
+
+      properties:
+
+        completed:
+
+          type: boolean
+
+      example:
+
+        completed: true
+
+    loginrequest:
+
+      title: loginrequest
+
+      required:
+
+      - email
+
+      - password
+
+      type: object
+
+      properties:
+
+        email:
+
+          type: string
+
+        password:
+
+          type: string
+
+      example:
+
+        email: zakarya@gmail.com
+
+        password: secret
+
+    registerrequest:
+
+      title: registerrequest
+
+      required:
+
+      - name
+
+      - email
+
+      - password
+
+      type: object
+
+      properties:
+
+        name:
+
+          type: string
+
+        email:
+
+          type: string
+
+        password:
+
+          type: string
+
+      example:
+
+        name: hacen
+
+        email: hacen@gmail.com
+
+        password: secret
+
+  securitySchemes:
+
+    httpBearer:
+
+      type: http
+
+      scheme: bearer
+
+security:
+
+- httpBearer: []
+
+tags:
+
+- name: Auth
+
+  description: ''
+
+- name: Tasks
+
+  description: ''
+
+
+
